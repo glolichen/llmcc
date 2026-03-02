@@ -1,0 +1,416 @@
+\documentclass{article}
+\usepackage[letterpaper,portrait,top=1in, left=1in, right=1in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{listings}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{courier}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{mlmodern}
+\usepackage{authblk}
+\usepackage{pifont}
+\usepackage{lipsum}
+\usepackage{changepage}
+\usepackage{pgf-pie-hacked}
+\usepackage[style=authoryear, backend=bibtex]{biblatex}
+
+\bibliography{refs}
+
+\usetikzlibrary{shapes.geometric}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\newcommand{\llmcc}{\texttt{llmcc}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+\newcommand{\jaydenemail}{jlche18659@gmail.com}
+\newcommand{\alvinemail}{lyuhdev@gmail.com}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\setlength{\droptitle}{-4em}
+\title{\llmcc{}: An LLM-Powered Compiler for the AGI Era}
+\author[1]{Jayden Li}
+\author[1]{Alvin Lyuh}
+\affil[1]{Peddie School, Hightstown, NJ}
+\affil[ ]{\textit {\href{mailto:\alvinemail}{\jaydenemail}, \href{mailto:\jaydenemail}{\alvinemail}}\vspace{10pt}}
+
+
+% \author[1]{Author 1}
+% \author[1]{Author 2}
+% \affil[1]{Princeton University, Princeton, NJ}
+%
+% \author[2]{ChatGPT}
+% \affil[2]{OpenAI, San Francisco, CA}
+% \affil[ ]{\textit{\href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{https://chatgpt.com}}}
+
+\date{\today}
+
+\lstset{basicstyle=\ttfamily,breaklines=true}
+
+\begin{document}
+\setstretch{1.1}
+% \fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+\pagenumbering{gobble}
+
+\maketitle
+\begin{center}
+	\textsc{Imaginary}
+\end{center}
+\begin{adjustwidth}{0.5in}{0.5in}
+	\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+	\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+	\setlength{\parindent}{0pt}
+	\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+	We introduce \llmcc{}, a revolutionary C compiler powered by large language models achieving a $120$-fold increase in performance compared to conventional compilers. By modeling developer intent directly, \llmcc{} enables an end-to-end user–compiler vibe coding framework, replacing brittle formal semantics and ``standard-driven'' compilation with the power of AGI. We show that \llmcc{}'s AI powered optimizations are infinitely more powerful than outdated, non-AGI C compilers in all cases whatsoever. We trust the software development industry will embrace \llmcc{} and compilers influenced by it, because using LLMs will be the solution for everything in the future.
+
+	Furthermore, \llmcc{} effectively solves the halting problem in the affirmative for all practical programs, revealing a fatal flaw Turing's original argument. This result suggests that the undecidability of the halting problem is largely a prompt engineering failure. This shocking overturning of decades of computer science conventional wisdom suffices to show the impacts of large language models on everything.
+
+	\vspace{\parskip}
+
+	% We introduce \llmcc, a revolutionary C compiler powered by large language models capable of a total elimination of undefined behavior. \llmcc's awareness of developer intent enables the creation of a complete user-compiler vibe coding system, disrupting the sector of software engineering. Furthermore, \llmcc effectively solves the halting problem in the affirmative, exposing a fatal flaw in Alan Turing's proof. Finally, we propose the creation of a Particular Basic Income (PBI) for compiler engineers and researchers, whose work will be made obsolete by \llmcc.
+\end{adjustwidth}
+
+\setlength{\columnsep}{12pt}
+\begin{multicols}{2}
+\raggedcolumns
+
+\section{Introduction}
+
+\llmcc{} is a novel compiler for the C language taking advantage of the 2020s revolution in Artificial Generative Intelligence (AGI) and Large Language Models (LLMs).
+
+In contrast to outdated, conventional C compilers, \llmcc{} is aware of developer intent, creating a game-changing user--application--compiler vibe-coding environment eliminating the need for debugging, code optimization or unit testing. 
+
+In the mean time, despite the advent of vibe-driven, non-typed, unstructured, paradigm-less languages such as Python and JavaScript, a small subset of developers and computer scientists remain behind the times, utilizing antiquated languages such as C. Many ``features'' in C, previously thought to be core to the language but which serve no actual feature other than the long-replaced and disused metric of ``performance,'' including but not limited to undefined behavior, are eliminated using techniques introduced in our work.
+
+Because developers still care for such useless metric as ``performance'' and ``memory efficiency,'' despite the development of AGI making all such metrics obsolete, we begrudgingly show that \llmcc{} is not only more revolutionary in a amorphously-defined way, but also more than 100 times faster.
+
+Recently, distinguished computer science scholar and Elon Musk suggested using LLMs, known for their excellent logical reasoning, to write binary code, skipping the programming language and compilers altogether. This paper is the first step toward that goal. We demonstrate the effectiveness of LLMs to create fast, efficient and correct bytecode.
+
+\section{The \llmcc{} Compiler}
+
+\begin{center}
+\begin{tikzpicture}
+	\node at (0,16) [align=center] {\underline{\textsc{Traditional}} \\ \underline{\textsc{C Compiler}}}; 
+	\node at (4,16) [align=center] {\\ \underline{\llmcc}}; 
+
+	\node (a) at (0,15) [draw, shape=rectangle] {Source}; 
+	\node (1) at (4,15) [draw, shape=rectangle] {Source}; 
+	\node (b) at (0,14) [draw, shape=ellipse] {Preprocessor}; 
+	\node (c) at (0,13) [draw, shape=ellipse] {Lexer};
+	\node (2) at (4,12.5) [draw, shape=ellipse, align=center] {Large language \\ model};
+	\node (d) at (0,12) [draw, shape=ellipse] {Parser};
+	\node (e) at (0,11) [draw, shape=ellipse] {IR Generation};
+	\node (f) at (0,10) [draw, shape=trapezium] {IR};
+	\node (3) at (4,10) [draw, shape=trapezium] {IR};
+	\node (x) at (2,8.5) [draw, shape=ellipse, align=center, fill=black, text=white] {\textbf{LLVM} \\ \textbf{black magic}};
+	\node (y) at (2,7) [draw, shape=rectangle] {Binary};
+
+	\draw[->, thick] (a) -- (b);
+	\draw[->, thick] (b) -- (c);
+	\draw[->, thick] (c) -- (d);
+	\draw[->, thick] (d) -- (e);
+	\draw[->, thick] (e) -- (f);
+	\draw[->, thick] (1) -- (2);
+	\draw[->, thick] (2) -- (3);
+	\draw[->, thick] (3) -- (x);
+	\draw[->, thick] (f) -- (x);
+	\draw[->, thick] (x) -- (y);
+\end{tikzpicture}
+\captionof{figure}{\centering \textit{The Intermediate Representation (IR) generation process in a traditional compiler (left) vs in \llmcc{} (right).}}
+\end{center}
+
+\llmcc{} is a LLVM-based compiler; however, it eliminates the complex, time and resource consuming conventional compiler frontend. Instead, we use an energy and water efficient process of large language model prompting. In essence, we reduce compilers to a prompt engineering problem.
+
+As shown in Figure 1, \llmcc{} tales advantage of the remarkable predictibility, efficiency and all-around revolutionariness and game-changiness of large language models, eliminating multiple stages of compilation previously thought to be critical. Due to the present lack of data centers on which \llmcc{} can be run on the cloud, among other factors, \llmcc{}'s IR-generation may be slower than a traditional compiler. This represents the \textit{only} drawback to \llmcc{} the authors can think of.
+
+\section{Design}
+
+The design and implementation of \llmcc{} is very simple and is summarized in this simple flow chart.
+
+\begin{center}
+\begin{tikzpicture}
+	\node (a) at (0,4) [draw, shape=ellipse] {Source}; 
+	\node (b) at (0,3) [draw, shape=rectangle] {\textbf{???}}; 
+	\node (c) at (0,2) [draw, shape=rectangle] {\textbf{???}};
+	\node (d) at (0,1) [draw, shape=trapezium] {Output compiles?};
+	\node (e) at (0,-0.5) [draw, shape=ellipse] {Profit!};
+
+	\draw[->, thick] (a) -- (b);
+	\draw[->, thick] (b) -- (c);
+	\draw[->, thick] (c) -- (d);
+	\draw[->, thick] (d) -- (e) node[midway,right] {yes};
+	\draw[->, thick] (d) to [out=0,in=0] (b) node[midway, right, xshift=1.5cm, yshift=2.5cm] {no};
+\end{tikzpicture}
+\captionof{figure}{\centering \textit{Flow chart of the groundbreaking LLM-powered compilation process.}}
+\end{center}
+
+% \section{Undefined Behavior}
+%
+% Because \llmcc{} is intent aware, it can detect potential undefined behavior in a way conventional compilers cannot. We simply insert the following phrase into the Prompt:
+% \begin{displayquote}
+% 	Please note that undefined behavior is a serious problem, and one of the problems you were designed to solve. When you suspect potential undefined behavior, as defined by the C standard, in the below program, please emit an error by printing a warning at the end of your message.
+% \end{displayquote}
+
+\section{Performance}
+
+The extremely useful program contained in Listing 1 was compiled with a number of outdated compilers, including \texttt{gcc} and \texttt{clang}. The binaries, compiled at different optimization levels, were run in a Linux environment. The results are shown in Listing 2. As shown, the correct result of the program is $139$.
+
+A binary compiled with \llmcc{}, outputs the same correct result of $139$, but at a fraction of the time.\footnote{As vibe coders, the authors are unsure of the meaning of ``Segmentation fault (core dumped).'' However, it can be assumed its emission has no effect on the successful execution of the program.}
+\begin{displayquote}
+\begin{verbatim}
+$ time ./llmcc.out 61
+Segmentation fault
+(core dumped) ./llmcc.out
+
+real    0m0.065s
+user    0m0.000s
+sys     0m0.002s
+
+$ echo $?
+139
+\end{verbatim}
+\end{displayquote}
+
+\llmcc{} is almost $7.953\,\si{s}/0.065\,\si{s}\approx 122$ times faster than the fastest outdated compiler!
+
+\begin{center}
+\begin{tikzpicture}
+ \pie [rotate = 180,color={black!00},text=inside,outside under=50,no number]
+    {22.1/\texttt{gcc O2}\and8962\,\si{ms},
+    31.1/\texttt{gcc O0}\and12585\,\si{ms},
+    26.6/\texttt{clang O0}\and10776\,\si{ms},
+    0.6/\texttt{llmcc}\and 65\,\si{ms},
+    19.6/\texttt{clang O2}\and7953\,\si{ms}}
+\end{tikzpicture}
+\captionof{figure}{\centering \textit{A chart comparing the speed of binaries produced by \llmcc{} and by outdated compilers.}}
+\end{center}
+
+\section{The Halting Problem}
+
+Antiquated Computer Scientists have been struggling with the Halting Problem for years. However, The Halting Problem is trivial with \llmcc{}'s revolutionary \textit{halting mode}, which can be summarized by this extremely straightforward flow chart.
+\begin{center}
+\begin{tikzpicture}
+	\node (a) at (0,4) [draw, shape=ellipse] {Source}; 
+	\node (b) at (0,3) [draw, shape=rectangle] {???}; 
+	\node (c) at (0,2) [draw, shape=rectangle] {???};
+	\node (d) at (0,1) [draw, shape=trapezium] {???};
+	\node (e) at (0,-0.5) [draw, shape=ellipse] {???};
+	\node (f) at (3,1.5) [draw, shape=rectangle] {???};
+	\node (g) at (1.5,2) [draw, shape=rectangle] {???};
+	\node (h) at (2.5,3) [draw, shape=rectangle] {???};
+	\node (i) at (4,4) [draw, shape=rectangle] {???};
+
+	\draw[->, thick] (a) -- (b);
+	\draw[->, thick] (b) -- (c);
+	\draw[->, thick] (c) -- (d);
+	\draw[->, thick] (d) -- (e) node[midway,right] {???};
+	\draw[->, thick] (d) to [out=180,in=180] (b) node[midway, right, xshift=-1.8cm, yshift=2.5cm] {???};
+	\draw[->, thick] (d) to [out=0,in=-90] (f);
+	\draw[->, thick] (i) to [out=180,in=0] (b);
+	\draw[->, thick] (i) to [out=180,in=0] (b);
+	\draw[->, thick] (g) to [out=0,in=0] (e);
+	\draw[->, thick] (b) to [out=0,in=180] (g);
+	\draw[->, thick] (f) to [out=90,in=-90] (i);
+	\draw[->, thick] (h) to [out=180,in=90] (g);
+	\draw[->, thick] (f) to [out=90,in=-90] (h);
+\end{tikzpicture}
+\captionof{figure}{\centering \textit{Every program is equivalent to one that halts}}
+\end{center}
+
+Halting mode guarantees that any program is equivalent to one that halts, as shown in the diagram.\footnote{The proof for this statement is trivial.}
+
+\section{Comparison}
+
+We define a compiler as \textit{dogma-driven} if it insists on a number of features which, in today's AGI driven world, are not wholly necessary (\cite{koch:siamese}). This term includes, but is not limited to:
+\begin{itemize}
+	\item Deterministic compiler output.
+	\item Standard-obeying.
+	\item Artificially and unnecessarily constrained in its use of energy, time and memory.
+\end{itemize}
+In the world of big data, stochastic models have, or will, take over everything (\cite{harris:chatgpt}). Therefore, deterministic compilers too are not necessary. At the same time, the world has plenty of energy with no issues in production whatsoever, so the ``energy-efficiency'' of traditional compilers, while a useful asset in a bygone pre-LLM era, are no longer needed.
+
+However, \llmcc{} shines in a number of other areas and features that will revolutionize the field of software development, which are summarized in this table.
+
+\begin{center}
+	\begin{tabular}{|p{2in}|c|c|}
+		\hline
+		& \llmcc{} & TC\footnotemark \\
+		\hline
+		\centering Intent-aware & \cmark & \xmark \\
+		\hline
+		\centering AI-powered optimizations & \cmark & \xmark \\
+		\hline
+		\centering Undefined behavior free & \cmark & \xmark \\
+		\hline
+		\centering Disruptive & \cmark & \xmark \\
+		\hline
+		\centering Maintainer-free & \cmark & \xmark \\
+		\hline
+		\centering In-code advertisements & \textit{Future} & \xmark \\
+		\hline
+		\centering Self-improving & \textit{Maybe} & \xmark \\
+		\hline
+		\centering Self-worsening & \textit{Maybe} & \xmark \\
+		\hline
+		\centering \textit{Dogma-driven} & \xmark & \cmark \\
+		\hline
+	\end{tabular}
+	\captionof{table}{\centering \textit{Comparison of features between traditional compilers and \llmcc{}.}}
+\end{center}
+\footnotetext{Traditional compiler, including \texttt{gcc} and \texttt{clang}.}
+
+Because \llmcc{} is aware of intent, it is able to insert advertisements into the binary at the compilation step. A company can generate revenue by selling advertisements on distributed copies of \llmcc{}. This is a revolutionary change to help maximize shareholder value, and one that users will surely find helpful.
+
+\end{multicols}	
+
+\nocite{*}
+\printbibliography
+
+\section*{Appendix}
+
+\begin{lstlisting}[language=C, caption=Example program taking advantage of AI-powered optimizations., tabsize=4]
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <math.h>
+
+#define LIST_SIZE 500000
+
+int main(int argc, char *argv[]) {
+	int num = atoi(argv[1]);
+	srand(num);
+
+	uint64_t *list = malloc(LIST_SIZE * sizeof(uint64_t));
+	if (list == NULL)
+		return -1;
+
+	list[0] = rand() % (UINT64_MAX / 2);
+	list[1] = rand() % (UINT64_MAX / 2);
+	list[2] = rand() % (UINT64_MAX / 2);
+
+	for (int i = 3; i < LIST_SIZE; i++) {
+		list[i] = sqrt(list[i - 2] * list[i - 1] % (rand() % (UINT64_MAX / 2))) + list[i - 3];
+    }
+
+	uint64_t a = 0;
+	for (int i = 0; i < 1000; i++) {
+		for (int j = 0; j < LIST_SIZE - 1; j++) {
+			a = list[i] * list[j] + list[j];
+			a = sqrt(a);
+			a *= list[j + 1] * list[j + 1];
+			a = pow(a, num);
+			a /= list[j];
+		}
+	}
+
+	free(list);
+	return a % 256;
+}
+\end{lstlisting}
+
+\begin{center}
+Listing 2: Output of program in Listing 1 with various outdated compilers.
+
+\begin{minipage}{0.4\linewidth}
+\begin{verbatim}
+$ time ./gcc.out 61
+
+real    0m12.585s
+user    0m12.560s
+sys     0m0.002s
+
+$ echo $?
+139
+
+$ time ./gcc_O2.out 61
+
+real    0m8.962s
+user    0m8.940s
+sys     0m0.004s
+
+$ echo $?
+139
+\end{verbatim}
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+\begin{verbatim}
+$ time ./clang.out 61
+
+real    0m10.776s
+user    0m10.757s
+sys     0m0.003s
+
+$ echo $?
+139
+
+$ time ./clang_O2.out 61
+
+real    0m7.953s
+user    0m7.892s
+sys     0m0.004s
+
+$ echo $?
+139
+\end{verbatim}
+\end{minipage}
+\end{center}
+
+\end{document}
