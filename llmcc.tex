@@ -119,9 +119,9 @@
 	\setlength{\parindent}{0pt}
 	\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
 
-	We introduce \llmcc{}, a revolutionary C compiler powered by large language models achieving a $120$-fold increase in performance compared to conventional compilers. By modeling developer intent directly, \llmcc{} enables an end-to-end user–compiler vibe coding framework, replacing brittle formal semantics and ``standard-driven'' compilation with the power of AGI. We show that \llmcc{}'s AI powered optimizations are infinitely more powerful than outdated, non-AGI C compilers in all cases whatsoever. We trust the software development industry will embrace \llmcc{} and compilers influenced by it, because using LLMs will be the solution for everything in the future.
+	We introduce \llmcc{}, a revolutionary C compiler powered by large language models achieving a $120$-fold increase in performance compared to conventional compilers. By modeling developer intent directly, \llmcc{} enables a cutting-edge end-to-end hyper-optimized synergic user–compiler vibe coding framework, replacing brittle formal semantics and ``standard-driven'' compilation with the power of AGI. We show that \llmcc{}'s AI powered optimizations are infinitely more powerful than outdated, non-AGI C compilers in all cases whatsoever. We trust the software development industry will embrace \llmcc{} and compilers influenced by it, because using LLMs will be the solution for everything in the future.
 
-	Furthermore, \llmcc{} effectively solves the halting problem in the affirmative for all practical programs, revealing a fatal flaw Turing's original argument. This result suggests that the undecidability of the halting problem is largely a prompt engineering failure. This shocking overturning of decades of computer science conventional wisdom suffices to show the impacts of large language models on everything.
+	Furthermore, \llmcc{} effectively solves the halting problem in the affirmative for all practical programs, revealing a fatal flaw in Turing's original argument. This result suggests that the undecidability of the halting problem is largely a prompt engineering failure. This shocking overturning of decades of computer science conventional wisdom suffices to show the impacts of large language models on everything.
 
 	\vspace{\parskip}
 
@@ -138,11 +138,11 @@
 
 In contrast to outdated, conventional C compilers, \llmcc{} is aware of developer intent, creating a game-changing user--application--compiler vibe-coding environment eliminating the need for debugging, code optimization or unit testing. 
 
-In the mean time, despite the advent of vibe-driven, non-typed, unstructured, paradigm-less languages such as Python and JavaScript, a small subset of developers and computer scientists remain behind the times, utilizing antiquated languages such as C. Many ``features'' in C, previously thought to be core to the language but which serve no actual feature other than the long-replaced and disused metric of ``performance,'' including but not limited to undefined behavior, are eliminated using techniques introduced in our work.
+In the meantime, despite the advent of vibe-driven, non-typed, free-form, unstructured, paradigm-less languages such as Python and JavaScript, a small subset of developers and computer scientists remain behind the times, utilizing antiquated languages such as C. Many ``features'' in C, previously thought to be core to the language but which serve no actual feature other than the long-replaced and disused metric of ``performance,'' including but not limited to undefined behavior, are eliminated using techniques introduced in our work.
 
 Because developers still care for such useless metric as ``performance'' and ``memory efficiency,'' despite the development of AGI making all such metrics obsolete, we begrudgingly show that \llmcc{} is not only more revolutionary in a amorphously-defined way, but also more than 100 times faster.
 
-Recently, distinguished computer science scholar Elon Musk suggested using LLMs, known for their excellent logical reasoning, to write binary code, skipping the programming language and compilers altogether. This paper is the first step toward that goal. We demonstrate the effectiveness of LLMs to create fast, efficient and correct bytecode.
+Recently, distinguished computer science scholar Elon Musk suggested using LLMs, known for their excellent logical reasoning, to write binary code, skipping the programming languages and compilers altogether. This paper is the first step toward that goal. We demonstrate the effectiveness of LLMs to create fast, efficient, and correct bytecode.
 
 \section{The \llmcc{} Compiler}
 
@@ -174,12 +174,14 @@ Recently, distinguished computer science scholar Elon Musk suggested using LLMs,
 	\draw[->, thick] (f) -- (x);
 	\draw[->, thick] (x) -- (y);
 \end{tikzpicture}
-\captionof{figure}{\centering \textit{The Intermediate Representation (IR) generation process in a traditional compiler (left) vs in \llmcc{} (right).}}
+\captionof{figure}{\centering \textit{The Intermediate Representation (IR) generation process in a traditional compiler (left) vs in \llmcc{} (right). As we can see, 1 step is less than 4 steps.}}
 \end{center}
 
 \llmcc{} is a LLVM-based compiler; however, it eliminates the complex, time and resource consuming conventional compiler frontend. Instead, we use an energy and water efficient process of large language model prompting. In essence, we reduce compilers to a prompt engineering problem.
 
-As shown in Figure 1, \llmcc{} tales advantage of the remarkable predictibility, efficiency and all-around revolutionariness and game-changiness of large language models, eliminating multiple stages of compilation previously thought to be critical. Due to the present lack of data centers on which \llmcc{} can be run on the cloud, among other factors, \llmcc{}'s IR-generation may be slower than a traditional compiler. This represents the \textit{only} drawback to \llmcc{} the authors can think of.
+As shown in Figure 1, \llmcc{} takes advantage of the remarkable predictibility, efficiency, and all-around revolutionariness and game-changiness of large language models, eliminating multiple stages of compilation previously thought to be critical. Due to the present lack of data centers on which \llmcc{} can be run on the cloud, among other factors, \llmcc{}'s IR-generation may be slower than a traditional compiler.
+However, this can be trivially resolved by compiling \llmcc{} with \llmcc{}.
+% This represents the \textit{only} drawback to \llmcc{} the authors can think of.
 
 \section{Design}
 
@@ -277,6 +279,39 @@ Antiquated Computer Scientists have been struggling with the Halting Problem for
 
 Halting mode guarantees that any program is equivalent to one that halts, as shown in the diagram.\footnote{The proof for this statement is trivial.}
 
+\begin{center}
+\begin{tikzpicture}
+	\node at (0, 16) [align=center]
+	{program \\ source \\ code};
+	% \node at (0,16) [align=center] {\underline{\textsc{Traditional}} \\ \underline{\textsc{C Compiler}}}; 
+	% \node at (4,16) [align=center] {\\ \underline{\llmcc}}; 
+
+	% \node (a) at (0,15) [draw, shape=rectangle] {Source}; 
+	% \node (1) at (4,15) [draw, shape=rectangle] {Source}; 
+	% \node (b) at (0,14) [draw, shape=ellipse] {Preprocessor}; 
+	% \node (c) at (0,13) [draw, shape=ellipse] {Lexer};
+	% \node (2) at (4,12.5) [draw, shape=ellipse, align=center] {Large language \\ model};
+	% \node (d) at (0,12) [draw, shape=ellipse] {Parser};
+	% \node (e) at (0,11) [draw, shape=ellipse] {IR Generation};
+	% \node (f) at (0,10) [draw, shape=trapezium] {IR};
+	% \node (3) at (4,10) [draw, shape=trapezium] {IR};
+	% \node (x) at (2,8.5) [draw, shape=ellipse, align=center, fill=black, text=white] {\textbf{LLVM} \\ \textbf{necromancy}};
+	% \node (y) at (2,7) [draw, shape=rectangle] {Binary};
+
+	% \draw[->, thick] (a) -- (b);
+	% \draw[->, thick] (b) -- (c);
+	% \draw[->, thick] (c) -- (d);
+	% \draw[->, thick] (d) -- (e);
+	% \draw[->, thick] (e) -- (f);
+	% \draw[->, thick] (1) -- (2);
+	% \draw[->, thick] (2) -- (3);
+	% \draw[->, thick] (3) -- (x);
+	% \draw[->, thick] (f) -- (x);
+	% \draw[->, thick] (x) -- (y);
+\end{tikzpicture}
+\captionof{figure}{\centering \textit{The Intermediate Representation (IR) generation process in a traditional compiler (left) vs in \llmcc{} (right). As we can see, 1 step is less than 4 steps.}}
+\end{center}
+
 \section{Comparison}
 
 We define a compiler as \textit{dogma-driven} if it insists on a number of features which, in today's AGI driven world, are not wholly necessary (\cite{koch:siamese}). This term includes, but is not limited to:
@@ -285,7 +320,7 @@ We define a compiler as \textit{dogma-driven} if it insists on a number of featu
 	\item Standard-obeying.
 	\item Artificially and unnecessarily constrained in its use of energy, time and memory.
 \end{itemize}
-In the world of big data, stochastic models have, or will, take over everything (\cite{harris:chatgpt}). Therefore, deterministic compilers too are not necessary. At the same time, the world has plenty of energy with no issues in production whatsoever, so the ``energy-efficiency'' of traditional compilers, while a useful asset in a bygone pre-LLM era, are no longer needed.
+In the world of big data, stochastic models have taken or will take over everything (\cite{harris:chatgpt}). Therefore, deterministic compilers too are not necessary. At the same time, the world has plenty of energy with no issues in production whatsoever, so the ``energy-efficiency'' of traditional compilers, while a useful asset in a bygone pre-LLM era, are no longer needed.
 
 However, \llmcc{} shines in a number of other areas and features that will revolutionize the field of software development, which are summarized in this table.
 
