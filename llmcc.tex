@@ -245,7 +245,7 @@ $ echo $?
 \captionof{figure}{\centering \textit{A chart comparing the speed of binaries produced by \llmcc{} and by outdated compilers.}}
 \end{center}
 
-\section{The Halting Problem}
+\section{The Halting Fallacy}
 
 Antiquated Computer Scientists have been struggling with the Halting Problem for years. However, The Halting Problem is trivial with \llmcc{}'s revolutionary \textit{halting mode}, which can be summarized by this extremely straightforward flow chart.
 \begin{center}
@@ -281,36 +281,65 @@ Halting mode guarantees that any program is equivalent to one that halts, as sho
 
 \begin{center}
 \begin{tikzpicture}
-	\node at (0, 16) [align=center]
-	{program \\ source \\ code};
-	% \node at (0,16) [align=center] {\underline{\textsc{Traditional}} \\ \underline{\textsc{C Compiler}}}; 
-	% \node at (4,16) [align=center] {\\ \underline{\llmcc}}; 
+	% \node at (0, 16) [draw, align=center, shape=trapezium, shape border rotate=180, top color=white, bottom color=white]
+    \node (src_code) at (0, 16) [align=center]
+    {program ``$p(x)$'' \\ source code};
+    \node (paradox_maker) at (0, 15) [draw, align=center, shape=trapezium, shape border rotate=180]
+	{Paradox Maker};
+    \node (halt_question) at (0, 14) [draw, align=center, shape=ellipse]
+    {``Does $p(p)$ halt?''};
+    
+    \node (inf_loop) at (-1, 12) [draw, align=center, shape=ellipse]
+    {Infinite Loop};
+    \node (halt) at (2, 12) [draw, align=center, shape=ellipse]
+    {Halt};
 
-	% \node (a) at (0,15) [draw, shape=rectangle] {Source}; 
-	% \node (1) at (4,15) [draw, shape=rectangle] {Source}; 
-	% \node (b) at (0,14) [draw, shape=ellipse] {Preprocessor}; 
-	% \node (c) at (0,13) [draw, shape=ellipse] {Lexer};
-	% \node (2) at (4,12.5) [draw, shape=ellipse, align=center] {Large language \\ model};
-	% \node (d) at (0,12) [draw, shape=ellipse] {Parser};
-	% \node (e) at (0,11) [draw, shape=ellipse] {IR Generation};
-	% \node (f) at (0,10) [draw, shape=trapezium] {IR};
-	% \node (3) at (4,10) [draw, shape=trapezium] {IR};
-	% \node (x) at (2,8.5) [draw, shape=ellipse, align=center, fill=black, text=white] {\textbf{LLVM} \\ \textbf{necromancy}};
-	% \node (y) at (2,7) [draw, shape=rectangle] {Binary};
-
-	% \draw[->, thick] (a) -- (b);
-	% \draw[->, thick] (b) -- (c);
-	% \draw[->, thick] (c) -- (d);
-	% \draw[->, thick] (d) -- (e);
-	% \draw[->, thick] (e) -- (f);
-	% \draw[->, thick] (1) -- (2);
-	% \draw[->, thick] (2) -- (3);
-	% \draw[->, thick] (3) -- (x);
-	% \draw[->, thick] (f) -- (x);
-	% \draw[->, thick] (x) -- (y);
+    \draw[->, thick] (paradox_maker) -- (halt_question);
+    \draw[->, thick] (halt_question) -- (inf_loop) node[midway, right] {Yes};
+    \draw[->, thick] (halt_question) -- (halt) node[midway, right] {No};
 \end{tikzpicture}
-\captionof{figure}{\centering \textit{The Intermediate Representation (IR) generation process in a traditional compiler (left) vs in \llmcc{} (right). As we can see, 1 step is less than 4 steps.}}
+    \captionof{figure}{\centering \textit{Alan Turing's setup for a supposed paradox in an algorithm that can determine if any algorithm halts. The Paradox Maker takes in a program $p(x)$'s source code and behaves in the opposite way of $p(p)$, never halting if $p(p)$ halts and halting if $p(p)$ never halts.}}
 \end{center}
+
+Alan Turing has allegedly ``proven'' with traditional logic
+that no general program can determine if another program terminates.
+However, his ``proof'' was written before the invention of AGI
+and \llmcc{}.
+The authors of this paper show that Turing's ``proof''
+and traditional Computer Scientists' acceptance of his ``proof''
+are simply the result of a lack of imagination.
+
+The erroneous proof goes as follows:
+Suppose there was some algorithm $H(p, i)$ that takes a
+program's source code and input,
+and returns whether or not running $p(i)$ will halt or not.
+Then, he imagines a paradox maker
+$P(p) = \begin{cases} ! & \text{if } H(p, p) \\ () & \text{if } \neg H(p, p) \end{cases}$
+that halts if $p(p)$ never halts and never halts if $p(p)$ halts.
+The alleged contradiction is that $H(H)$ can neither
+halt nor can it never halt.
+
+The authors of this proof can not directly speak
+on the mathematical validity of Turing's supposed argument
+as we have replaced our capacities to conduct logic with LLMs.
+However, after an LLM implemented this ``paradox'' in C,
+we compiled it with \llmcc{}'s halting mode
+and have discovered that the answer to the Halting problem is yes.
+
+\begin{samepage}
+$H(H)$ clearly halts:
+
+\begin{displayquote}
+\begin{verbatim}
+$ ./paradox.out
+Segmentation fault
+(core dumped) ./paradox.out
+
+$
+\end{verbatim}
+\end{displayquote}
+\end{samepage}
+
 
 \section{Comparison}
 
