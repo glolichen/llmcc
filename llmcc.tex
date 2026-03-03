@@ -282,21 +282,21 @@ Halting mode guarantees that any program is equivalent to one that halts, as sho
 \begin{center}
 \begin{tikzpicture}
 	% \node at (0, 16) [draw, align=center, shape=trapezium, shape border rotate=180, top color=white, bottom color=white]
-    \node (src_code) at (0, 16) [align=center]
+    \node (src_code) at (0, 18) [align=center]
     {program ``$p(x)$'' \\ source code};
-    \node (paradox_maker) at (0, 15) [draw, align=center, shape=trapezium, shape border rotate=180]
+    \node (paradox_maker) at (0, 17) [draw, align=center, shape=ellipse, shape border rotate=180]
 	{Paradox Maker};
-    \node (halt_question) at (0, 14) [draw, align=center, shape=ellipse]
+    \node (halt_question) at (0, 16) [draw, align=center, shape=trapezium]
     {``Does $p(p)$ halt?''};
     
-    \node (inf_loop) at (-1, 12) [draw, align=center, shape=ellipse]
+    \node (inf_loop) at (-1.5, 14) [draw, align=center, shape=ellipse]
     {Infinite Loop};
-    \node (halt) at (2, 12) [draw, align=center, shape=ellipse]
+    \node (halt) at (1.5, 14) [draw, align=center, shape=ellipse]
     {Halt};
 
     \draw[->, thick] (paradox_maker) -- (halt_question);
-    \draw[->, thick] (halt_question) -- (inf_loop) node[midway, right] {Yes};
-    \draw[->, thick] (halt_question) -- (halt) node[midway, right] {No};
+    \draw[->, thick] (halt_question) -- (inf_loop) node[midway, xshift=-6pt, left] {Yes};
+    \draw[->, thick] (halt_question) -- (halt) node[midway, xshift=6pt, right] {No};
 \end{tikzpicture}
     \captionof{figure}{\centering \textit{Alan Turing's setup for a supposed paradox in an algorithm that can determine if any algorithm halts. The Paradox Maker takes in a program $p(x)$'s source code and behaves in the opposite way of $p(p)$, never halting if $p(p)$ halts and halting if $p(p)$ never halts.}}
 \end{center}
@@ -334,8 +334,6 @@ $H(H)$ clearly halts:
 $ ./paradox.out
 Segmentation fault
 (core dumped) ./paradox.out
-
-$
 \end{verbatim}
 \end{displayquote}
 \end{samepage}
